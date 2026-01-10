@@ -7,4 +7,11 @@
 
 ACPlayerCharacter::ACPlayerCharacter()
 {
+	CameraBoom = CreateDefaultSubobject<USpringArmComponent>("Camera Boom");
+	CameraBoom->SetupAttachment(GetRootComponent());
+
+
+	ViewCam = CreateDefaultSubobject<UCameraComponent>("View Cam");
+	ViewCam->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
+
 }

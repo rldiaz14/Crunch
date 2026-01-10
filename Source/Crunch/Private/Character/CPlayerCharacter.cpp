@@ -8,6 +8,8 @@
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
 
+
+
 ACPlayerCharacter::ACPlayerCharacter()
 {
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>("Camera Boom");
@@ -44,6 +46,17 @@ void ACPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 	if (EnhancedInputComp)
 	{
 		EnhancedInputComp->BindAction(JumpInputAction, ETriggerEvent::Triggered, this, &ACPlayerCharacter::Jump);
+		EnhancedInputComp->BindAction(LookInputAction, ETriggerEvent::Triggered, this, &ACPlayerCharacter::HandleLookInput);
 	}
 
 }
+
+void ACPlayerCharacter::HandleLookInput(const FInputActionValue& InputActionValue)
+{
+	FVector2D InputVal = InputActionValue.Get<FVector2D>();
+
+	AddControllerPitchInput(InputVal.Y);
+	AddControllerYawInput(InputVal.X);
+}
+
+

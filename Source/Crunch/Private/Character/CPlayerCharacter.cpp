@@ -14,11 +14,12 @@ ACPlayerCharacter::ACPlayerCharacter()
 {
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>("Camera Boom");
 	CameraBoom->SetupAttachment(GetRootComponent());
-
+	CameraBoom->bUsePawnControlRotation = true;
 
 	ViewCam = CreateDefaultSubobject<UCameraComponent>("View Cam");
 	ViewCam->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
-
+	
+	bUseControllerRotationYaw = false;
 }
 
 void ACPlayerCharacter::PawnClientRestart()

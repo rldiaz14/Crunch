@@ -4,6 +4,7 @@
 #include "Character/CPlayerCharacter.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
+#include "GameFramework/PlayerController.h"
 
 ACPlayerCharacter::ACPlayerCharacter()
 {
@@ -13,5 +14,17 @@ ACPlayerCharacter::ACPlayerCharacter()
 
 	ViewCam = CreateDefaultSubobject<UCameraComponent>("View Cam");
 	ViewCam->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
+
+}
+
+void ACPlayerCharacter::PawnClientRestart()
+{
+	Super::PawnClientRestart();
+	APlayerController* OwningPlayerController = GetController<APlayerController>();
+	if (OwningPlayerController)
+	{
+
+	}
+
 
 }

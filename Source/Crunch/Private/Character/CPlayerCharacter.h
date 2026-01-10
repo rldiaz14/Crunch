@@ -16,6 +16,8 @@ class ACPlayerCharacter : public ACCharacter
 public:
 	ACPlayerCharacter();
 
+	virtual void PawnClientRestart() override;
+
 private:
 	UPROPERTY(VisibleDefaultsOnly, Category = "View")
 	class USpringArmComponent* CameraBoom;

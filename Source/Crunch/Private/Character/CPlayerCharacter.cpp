@@ -19,7 +19,7 @@ ACPlayerCharacter::ACPlayerCharacter()
 	ViewCam = CreateDefaultSubobject<UCameraComponent>("View Cam");
 	ViewCam->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
 	
-
+	bUseControllerRotationYaw = false;
 }
 
 void ACPlayerCharacter::PawnClientRestart()
@@ -33,7 +33,6 @@ void ACPlayerCharacter::PawnClientRestart()
 		{
 			InputSubsystem->RemoveMappingContext(GameplayInputMappingContext);
 			InputSubsystem->AddMappingContext(GameplayInputMappingContext, 0);
-
 		}
 	}
 
